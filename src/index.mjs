@@ -6,7 +6,7 @@ import { chromium } from "playwright";
 
     await page.goto('https://news.ycombinator.com/');
 
-
+   
 
     const elements = await page.$$eval('tbody', (results) => (
         results.map((el) => {
@@ -20,10 +20,9 @@ import { chromium } from "playwright";
 
             const published = el.querySelector('.age')?.innerText;
 
-            // comments
-            
+            const comments = el.innerText.includes(' comments')
 
-            return { title, points, send_by, published };
+            return { title, points, send_by, published, comments };
         })
     ));
 
