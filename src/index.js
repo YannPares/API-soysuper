@@ -18,9 +18,15 @@ app.get(['/:page','/', '*'], async (req, res) => {
             console.log(i)  
         }
     }
-    const data = cache[page]
-    console.log(data)
-    const dataFormat = JSON.stringify(data, null, 2);
+    let showPage = {}
+    for (let i = 1; i <= page; i++){
+        if (cache[i]) {
+            showPage[i] = cache[i];
+        }
+    }
+
+    console.log(cache)
+    const dataFormat = JSON.stringify(showPage, null, 2);
     res.setHeader('Content-Type', 'application/json');    
     res.send(dataFormat); 
      
