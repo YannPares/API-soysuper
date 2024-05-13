@@ -1,11 +1,11 @@
 const { chromium } = require('playwright');
 
 
-async function scraping () {
+async function scraping (...pagination) {
     const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
 
-    await page.goto('https://news.ycombinator.com/?p=1');
+    await page.goto(`https://news.ycombinator.com/?p=${pagination}`);
 
     const elements = await page.$$eval('.athing', (results) => (
     results.map((el) => {
