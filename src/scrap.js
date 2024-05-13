@@ -1,7 +1,7 @@
-import { chromium } from "playwright";
+const { chromium } = require('playwright');
 
 
-export async function scraping () {
+async function scraping () {
     const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
 
@@ -26,6 +26,6 @@ export async function scraping () {
     
 };
 
-
+module.exports = { scraping };
 
 
