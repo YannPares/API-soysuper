@@ -15,7 +15,7 @@ describe('Verifying if scraping returns an array data', () => {
 });
 
 describe('Verifying that data contains all properties', () => {
-    test('should return an array', async () => {
+    test('should return all properties', async () => {
         const data = await scraping()
         data.forEach(item => {
             expect(item).toHaveProperty('title');
