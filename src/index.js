@@ -15,7 +15,7 @@ app.get(['/:page', '/', '*'], async (req, res) => {
         
         for (let i = 1; i <= page; i++) {
             if (!cache[i]) {
-                const data = scraping(i)
+                const dataPromise = scraping(i)
                 .then(data => {
                     cache[i] = data;
                     console.log(i)
@@ -23,7 +23,7 @@ app.get(['/:page', '/', '*'], async (req, res) => {
                 .catch(error => {
                     console.error('error caching data', error)
                 })
-                scrapingPromises.push(data)
+                scrapingPromises.push(dataPromise)
 
             }
         }
