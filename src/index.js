@@ -6,30 +6,39 @@ const PORT = process.env.PORT || 3000;
 
 let cache = {}
 
-app.get(['/:page','/', '*'], async (req, res) => {
-    
+app.get(['/:page', '/', '*'], async (req, res) => {
+
     let page = req.params.page || 1
     console.log(page)
+    
+        let scrapingPromises = [];
+        
+        for (let i = 1; i <= page; i++) {
+            if (!cache[i]) {
+                const data = scraping(i)
+                .then(data => {
+                    cache[i] = data;
+                    console.log(i)
+                })
+                .catch(error => {
+                    console.error('error caching data', error)
+                })
+                scrapingPromises.push(data)
 
-    for (let i = 1; i <= page; i++ ){
-        if (!cache[i]){
-            const data = await scraping(i);
-            cache[i] = data;
-            console.log(i)  
+            }
         }
-    }
-    let showPage = {}
-    for (let i = 1; i <= page; i++){
-        if (cache[i]) {
-            showPage[i] = cache[i];
+        await Promise.all(scrapingPromises)
+        
+        let showPage = {}
+        for (let i = 1; i <= page; i++) {
+            if (cache[i]) {
+                showPage[i] = cache[i];
+            }
         }
-    }
-
-    console.log(cache)
     const dataFormat = JSON.stringify(showPage, null, 2);
-    res.setHeader('Content-Type', 'application/json');    
-    res.send(dataFormat); 
-     
+    res.setHeader('Content-Type', 'application/json');
+    res.send(dataFormat);
+
 });
 
 app.listen(PORT)
