@@ -66,7 +66,9 @@ Your page will show something like this:
 
 ![Server Image](https://i.gyazo.com/08d1c454e6142a2e5669b53d88f03e7e.png)
 
-*IMPORTANT* You'll have cache. When you load /10, you'll have loaded pages 1 through 10 into the cache. If you reload the page, you will empty the cache.
+*IMPORTANT* 
+
+You'll have cache. When you load /10, you'll have loaded pages 1 through 10 into the cache. If you reload the page, you will empty the cache.
 
 ## License
 
