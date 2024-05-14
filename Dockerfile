@@ -8,7 +8,7 @@ RUN npx playwright install
 RUN apt-get update -q && \
     apt-get install -q -y libasound2 libatk-bridge2.0-0 libnss3 xdg-utils libcups2 libgbm1 
     
-# RUN apt-get libxkbcommon
+RUN apt-get install -y libxkbcommon0
 
 COPY . .
 
