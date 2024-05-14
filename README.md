@@ -46,7 +46,7 @@ Once the application working on localhost, you can send scraping requests on URL
 
 Your page will show something like this:
 
-![Server Image](https://gyazo.com/08d1c454e6142a2e5669b53d88f03e7e)
+![Server Image](https://i.gyazo.com/08d1c454e6142a2e5669b53d88f03e7e.png)
 
 
 ## License
