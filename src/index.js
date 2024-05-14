@@ -9,16 +9,15 @@ let cache = {}
 app.get(['/:page', '/', '*'], async (req, res) => {
 
     let page = req.params.page || 1
-    console.log(page)
     
         let scrapingPromises = [];
         
         for (let i = 1; i <= page; i++) {
             if (!cache[i]) {
                 const dataPromise = scraping(i)
+              
                 .then(data => {
                     cache[i] = data;
-                    console.log(i)
                 })
                 .catch(error => {
                     console.error('error caching data', error)
@@ -40,6 +39,5 @@ app.get(['/:page', '/', '*'], async (req, res) => {
     res.send(dataFormat);
 
 });
-
 app.listen(PORT)
 console.log("server is listening on port", PORT)
