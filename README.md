@@ -42,7 +42,12 @@ This is an application for web scraping using Node.js and Playwright.
 
 ## Usage
 
-Once the application working on server, you can send scraping requests on URL/${here}. The URL for scraping should be passed as an argument when making the request to the application.
+Once the application working on localhost, you can send scraping requests on URL/${here}. The URL for scraping should be passed as an argument when making the request to the application.
+
+Your page will show something like this:
+
+![Server Image](https://gyazo.com/08d1c454e6142a2e5669b53d88f03e7e)
+
 
 ## License
 
