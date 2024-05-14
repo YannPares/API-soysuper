@@ -6,7 +6,6 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "src/index.js, src/scrap.js",
     "test": "jest"
   },
   "keywords": [],

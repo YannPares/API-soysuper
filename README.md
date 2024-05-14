@@ -22,8 +22,10 @@ This is an application for web scraping using Node.js and Playwright.
 3. Run the application:
 
     ```bash
-    npm start
+    npm run dev
     ```
+4. Open localhost:3000/ on your browser
+
 
 ### With Docker Compose
 
@@ -39,6 +41,8 @@ This is an application for web scraping using Node.js and Playwright.
     ```bash
     docker-compose up -d
     ```
+
+3. Open localhost:3000/ on your browser
 
 ## Usage
 
