@@ -4,10 +4,22 @@ const { scraping } = require('./scrap.js');
 const app = express()
 const PORT = process.env.PORT || 3000;
 
+app.use((req, res, next) => {
+    if (req.headers['cache-control'] === 'max-age=0') {
+        isPageReload = true;
+    } else {
+        isPageReload = false;
+    }
+    next();
+});
+
 let cache = {}
 
 app.get(['/:page', '/', '*'], async (req, res) => {
 
+    if(isPageReload){
+        cache = {}
+    }
     let page = req.params.page || 1
     
         let scrapingPromises = [];
