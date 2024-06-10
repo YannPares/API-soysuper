@@ -1,10 +1,17 @@
 const { chromium } = require('playwright');
 
+let browser = false
+
+async function getBrowser () {
+    if (!browser){
+        browser = await chromium.launch({ headless: true });
+    }
+    return browser
+}
 
 async function scraping (...pagination) {
-    const browser = await chromium.launch({ headless: true });
-    const page = await browser.newPage();
-
+    const browser = await getBrowser()
+    const page = await browser.newPage()
     await page.goto(`https://news.ycombinator.com/?p=${pagination}`);
 
     const elements = await page.$$eval('.athing', (results) => (
@@ -20,7 +27,7 @@ async function scraping (...pagination) {
         return { title, points, send_by, published, comments };
     })
 )); 
-    await browser.close();
+    await page.close();
     return elements;
 };
 
